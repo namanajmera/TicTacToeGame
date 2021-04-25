@@ -34,15 +34,25 @@ public class TicTacToeGame {
 			System.out.println("Player Letter: " + player + "\nComputer Letter : " + computer);
 		}
 		
+		// UC3 - Display the Board
+				public static void displayBoard(char[] board) {
+					System.out.println("\n\t " + board[1] + " | " + board[2] + " | " + board[3] + "\n\t-----------");
+					System.out.println("\t " + board[4] + " | " + board[5] + " | " + board[6] + "\n\t-----------");
+					System.out.println("\t " + board[7] + " | " + board[8] + " | " + board[9] + "\n\t");
+				}
+		
 		private static void startGame() {
 			char[] board = createBoard();
+			takeInput();
+			displayBoard(board);
 		}
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
 			System.out.println("Welcome to the TicTacToe Game");
 			startGame();
-			takeInput();
 			sc.close();
 		}
+		
+		
 
 }
