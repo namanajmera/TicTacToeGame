@@ -4,6 +4,8 @@ public class TicTacToeGame {
 	
 	static Scanner sc = new Scanner(System.in);	
 	static char player, computer;
+	static String lastPlayed;
+
 
 	
 	// UC1 - Creating a Board
@@ -40,7 +42,23 @@ public class TicTacToeGame {
 					System.out.println("\t " + board[4] + " | " + board[5] + " | " + board[6] + "\n\t-----------");
 					System.out.println("\t " + board[7] + " | " + board[8] + " | " + board[9] + "\n\t");
 				}
-		
+				
+				public static void movePlayer(char[] board) {
+					System.out.print("Enter the index you want to move to: ");
+					int index = sc.nextInt();
+					while (index < 1 || index > 9) {
+						System.out.print("Wrong Input. Try Again : ");
+						index = sc.nextInt();
+					}
+					if (board[index] == ' ') {
+						board[index] = player;
+						displayBoard(board);
+					} else {
+						System.out.println("Index not available. Choose another");
+						movePlayer(board);
+					}
+					lastPlayed = "Player";
+				}
 		private static void startGame() {
 			char[] board = createBoard();
 			takeInput();
