@@ -147,7 +147,7 @@ public class TicTacToeGame {
 					else if (checkPlayWinPos != 0)// UC9
 						board[checkPlayWinPos] = computer;
 					else {
-						if (board[1] == ' ')
+						if (board[1] == ' ') //UC10
 							board[1] = computer;
 						else if (board[3] == ' ')
 							board[3] = computer;
