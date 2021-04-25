@@ -97,6 +97,39 @@ public class TicTacToeGame {
 //						moveComputer(board);
 					}
 				}
+				
+				public static boolean outcome(char[] board) {
+					if (checkWin(board))
+						return true;
+					else if (areMovesLeft(board)) {
+						if (lastPlayed.equals("Computer"))
+							movePlayer(board);
+						else
+							moveComputer(board);
+						return false;
+					} else {
+						System.out.println("Game Tied.");
+						return false;
+					}
+				}
+				private static boolean areMovesLeft(char[] board) {
+					for (int pos = 1; pos < board.length; pos++) {
+						if (pos == ' ')
+							return true;
+					}
+					return false;
+				}
+				private static boolean checkWin(char[] board) {
+					return ((board[1] == board[2] && board[2] == board[3] && board[1] != ' ') // top-row
+							|| (board[4] == board[5] && board[5] == board[6] && board[4] != ' ') // middle-row
+							|| (board[7] == board[8] && board[8] == board[9] && board[7] != ' ') // bottom-row
+							|| (board[1] == board[4] && board[4] == board[7] && board[1] != ' ') // left-column
+							|| (board[2] == board[5] && board[5] == board[8] && board[2] != ' ') // middle-column
+							|| (board[3] == board[6] && board[6] == board[9] && board[3] != ' ') // right-column
+							|| (board[1] == board[5] && board[5] == board[9] && board[1] != ' ') // left-diagonal
+							|| (board[3] == board[5] && board[5] == board[7] && board[3] != ' ')); // right-diagonal
+				}
+
 		private static void startGame() {
 			char[] board = createBoard();
 			takeInput();
