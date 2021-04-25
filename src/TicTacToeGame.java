@@ -156,7 +156,7 @@ public class TicTacToeGame {
 						else if (board[9] == ' ')
 							board[9] = computer;
 						else if (board[5] == ' ')
-							board[5] = computer;
+							board[5] = computer; //UC11
 						else if (board[2] == ' ')
 							board[2] = computer;
 						else if (board[4] == ' ')
