@@ -5,6 +5,8 @@ public class TicTacToeGame {
 	static Scanner sc = new Scanner(System.in);	
 	static char player, computer;
 	static String lastPlayed;
+	static final int head = 1, tail = 0;
+
 
 
 	
@@ -81,6 +83,19 @@ public class TicTacToeGame {
 							System.exit(0);
 					}
 					return;
+				}
+				// UC6 - Randomly decide who plays first
+				public static void firstMove(char[] board) {
+					int toss = (int) (Math.random() * 2 % 2);
+					if (toss == head) {
+						System.out.println("Player Wins the Toss.");
+						lastPlayed = "Player";
+						movePlayer(board);
+					} else {
+						System.out.println("Computer Wins the Toss.");
+						lastPlayed = "Computer";
+//						moveComputer(board);
+					}
 				}
 		private static void startGame() {
 			char[] board = createBoard();
