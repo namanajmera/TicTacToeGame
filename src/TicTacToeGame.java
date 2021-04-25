@@ -28,6 +28,8 @@ public class TicTacToeGame {
 				System.out.println("Invalid Character. Try Again.");
 				return takeInput();
 			}
+			
+			
 		}
 
 		// UC2 - Determine letter for player and computer
@@ -42,6 +44,16 @@ public class TicTacToeGame {
 					System.out.println("\t " + board[4] + " | " + board[5] + " | " + board[6] + "\n\t-----------");
 					System.out.println("\t " + board[7] + " | " + board[8] + " | " + board[9] + "\n\t");
 				}
+				
+				private static boolean isEmpty(char[] board) {
+					for (char cell : board) {
+						if (cell == ' ')
+							return true;
+					}
+					return false;
+				}
+				
+				//UC4 and UC5
 				
 				public static void movePlayer(char[] board) {
 					System.out.print("Enter the index you want to move to: ");
@@ -58,6 +70,17 @@ public class TicTacToeGame {
 						movePlayer(board);
 					}
 					lastPlayed = "Player";
+					
+					if (isEmpty(board)) {
+//						moveComputer(board);
+					} else {
+						System.out.println("Game Tied. \nDo You Want to Play Another Game (Y/N) : "); // UC12 -- Board is full
+						if (Character.toUpperCase(sc.next().charAt(0)) == 'Y') // UC13 -- Next Game
+							startGame();
+						else
+							System.exit(0);
+					}
+					return;
 				}
 		private static void startGame() {
 			char[] board = createBoard();
