@@ -130,7 +130,7 @@ public class TicTacToeGame {
 							|| (board[3] == board[5] && board[5] == board[7] && board[3] != ' ')); // right-diagonal
 				}
 				
-				// UC8
+				// UC8 - UC12 Computer Movement
 				public static void moveComputer(char[] board) {
 					int checkCompWinPos = checkIsWinning(board, computer);
 					int checkPlayWinPos = checkIsWinning(board, player);
@@ -144,10 +144,10 @@ public class TicTacToeGame {
 						else
 							System.exit(0);
 					} // UC8
-					else if (checkPlayWinPos != 0)// UC9
+					else if (checkPlayWinPos != 0) // UC9
 						board[checkPlayWinPos] = computer;
 					else {
-						if (board[1] == ' ') //UC10
+						if (board[1] == ' ') // UC10
 							board[1] = computer;
 						else if (board[3] == ' ')
 							board[3] = computer;
@@ -156,7 +156,7 @@ public class TicTacToeGame {
 						else if (board[9] == ' ')
 							board[9] = computer;
 						else if (board[5] == ' ')
-							board[5] = computer; //UC11
+							board[5] = computer; // UC11
 						else if (board[2] == ' ')
 							board[2] = computer;
 						else if (board[4] == ' ')
@@ -168,6 +168,19 @@ public class TicTacToeGame {
 					}
 					displayBoard(board);
 					lastPlayed = "Computer";
+					if (checkWin(board)) { // UC12 - Computer Wins
+						System.out.println("Computer Won The Game !! \nDo You Want to Play Another Game (Y/N) : ");
+						if (Character.toUpperCase(sc.next().charAt(0)) == 'Y') // UC13 - Next Game
+							startGame();
+						else
+							System.exit(0);
+					}
+					if (isEmpty(board)) {
+						movePlayer(board);
+					} else {
+						System.out.println("Game Tied."); // UC12 - board is full
+						System.exit(0);
+					}
 				}
 				private static int checkIsWinning(char[] board, char letter) {
 					int index = 1;
