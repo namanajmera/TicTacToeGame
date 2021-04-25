@@ -130,7 +130,7 @@ public class TicTacToeGame {
 							|| (board[3] == board[5] && board[5] == board[7] && board[3] != ' ')); // right-diagonal
 				}
 				
-				// UC8 - UC12 Computer Movement
+				// UC8
 				public static void moveComputer(char[] board) {
 					int checkCompWinPos = checkIsWinning(board, computer);
 					int checkPlayWinPos = checkIsWinning(board, player);
@@ -144,7 +144,7 @@ public class TicTacToeGame {
 						else
 							System.exit(0);
 					} // UC8
-					else if (checkPlayWinPos != 0)
+					else if (checkPlayWinPos != 0)// UC9
 						board[checkPlayWinPos] = computer;
 					else {
 						if (board[1] == ' ')
